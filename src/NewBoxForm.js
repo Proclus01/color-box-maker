@@ -5,17 +5,33 @@ class NewBoxForm extends Component {
         super(props);
         this.state = {height: "", width: "", color: ""}
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // Data from our forms is being added to the data in this components state
     handleChange(evt) {
         this.setState({
+            // Update our state using computed properties
             [evt.target.name]: evt.target.value
         })
     }
 
+    // Take data from our state (which was added from forms using handleChange) 
+    // and pass it upwards into BoxList, and add form data to Boxlist's state
+    handleSubmit(evt) {
+        // Stop the page from refreshing on form submission
+        evt.preventDefault();
+
+        // Call the parent component's method
+        this.props.createBox(this.state);
+
+        // Refresh the input
+        this.setState({height: "", width: "", color: ""})
+    }
+
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
 
                 <div>
                     <label htmlFor="height">Height</label>
@@ -49,7 +65,7 @@ class NewBoxForm extends Component {
                         id="color" 
                     />
                 </div>
-
+                <button>Add New Box</button>
             </form>
         )
     }

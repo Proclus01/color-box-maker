@@ -12,11 +12,20 @@ class BoxList extends Component {
                 {width: 10, height: 40, color: "orange"}
             ]
         }
+
+        this.create = this.create.bind(this);
+    }
+
+    // Take data from our form and add it to state
+    create(newBox) {
+        this.setState({
+            boxes: [...this.state.boxes, newBox]
+        })
     }
 
     render() {
 
-        // 
+        // Iterate over our state to create multiple box components
         const boxes = this.state.boxes.map(
             box => (
                 <Box 
@@ -27,10 +36,12 @@ class BoxList extends Component {
             )
         )
 
+        // Pass down our create method into the child component 
+        // so the child component can call this method using props
         return (
             <div>
                 <h1>Color Box Maker</h1>
-                <NewBoxForm />
+                <NewBoxForm createBox={this.create}/>
                 {boxes}
                 
             </div>
