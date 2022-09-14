@@ -25,6 +25,7 @@ class NewBoxForm extends Component {
         // Stop the page from refreshing on form submission
         evt.preventDefault();
 
+        // Adding in a uuid will allow us to identify the component and delete it without explicitly naming it
         const newBox = {...this.state, id: uuidv4()}
 
         // Call the parent component's method
