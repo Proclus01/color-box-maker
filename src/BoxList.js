@@ -18,7 +18,7 @@ class BoxList extends Component {
 
     // Remove an item from the state
     remove(id) {
-        this.setStaet({
+        this.setState({
             boxes: this.state.boxes.filter(
                 box => box.id !== id
             )
