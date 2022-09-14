@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Box from "./Box.js";
+import NewBoxForm from "./NewBoxForm.js";
 
 class BoxList extends Component {
     constructor(props) {
@@ -29,7 +30,9 @@ class BoxList extends Component {
         return (
             <div>
                 <h1>Color Box Maker</h1>
+                <NewBoxForm />
                 {boxes}
+                
             </div>
         )
     }
