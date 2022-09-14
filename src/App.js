@@ -1,22 +1,12 @@
 import './App.css';
-import Box from './Box.js';
+import BoxList from './BoxList.js';
 
 function App() {
   return (
     <div className="App">
 
-      <Box 
-        height={10}
-        width={20}
-        color="purple"
-      />
+      <BoxList />
 
-      <Box 
-        height={15}
-        width={30}
-        color="teal"
-      />
-      
     </div>
   );
 }
