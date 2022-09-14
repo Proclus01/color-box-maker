@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 class NewBoxForm extends Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class NewBoxForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // Data from our forms is being added to the data in this components state
+    // Data from our forms is being added to the data in this component's state
     handleChange(evt) {
         this.setState({
             // Update our state using computed properties
@@ -16,14 +17,18 @@ class NewBoxForm extends Component {
         })
     }
 
-    // Take data from our state (which was added from forms using handleChange) 
-    // and pass it upwards into BoxList, and add form data to Boxlist's state
+    /*  
+        Take data from our state (which was added from forms using handleChange) 
+        and pass it upwards into BoxList, and add form data to Boxlist's state 
+    */
     handleSubmit(evt) {
         // Stop the page from refreshing on form submission
         evt.preventDefault();
 
+        const newBox = {...this.state, id: uuidv4()}
+
         // Call the parent component's method
-        this.props.createBox(this.state);
+        this.props.createBox(newBox);
 
         // Refresh the input
         this.setState({height: "", width: "", color: ""})
