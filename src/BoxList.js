@@ -9,7 +9,7 @@ class BoxList extends Component {
 
         this.state= {
             boxes: [
-                {width: 10, height: 40, color: "orange"}
+                // State submittted from forms will go here
             ]
         }
 
